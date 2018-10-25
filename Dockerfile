@@ -19,7 +19,9 @@ ENV NODE_ENV production
 RUN git clone https://github.com/snibox/snibox.git /app
 COPY Gemfile ./
 RUN gem install bundler && bundle install
-COPY database.yml ./config/database.yml
+COPY database.yml ./config/
+COPY application.rb ./config/
+COPY docker-entrypoint.sh ./
 
 VOLUME /app/db/database
 
@@ -29,4 +31,5 @@ RUN ./bin/rake assets:precompile
 
 EXPOSE 3000
 
-ENTRYPOINT ./bin/rails server
+ENTRYPOINT ["bundle", "exec"]
+CMD ["rails", "server", "-b", "0.0.0.0"]
