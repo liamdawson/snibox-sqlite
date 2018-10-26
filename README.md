@@ -7,7 +7,6 @@ To run this container use following parameters:
 ```bash
 docker run -d --name snibox \
               --volume /path/to/local/db:/app/db/database \
-              --env SECRET_KEY_BASE="<rails secret key>" \
               --publish 80:3000 \
               snibox
 ```
