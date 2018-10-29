@@ -15,19 +15,18 @@ WORKDIR /app
 ENV RAILS_ENV development
 ENV RACK_ENV development
 ENV NODE_ENV production
+ENV GIT_HASH 2dad2bb572aa458760decde5320c382b3080a22e
 
-RUN git clone https://github.com/snibox/snibox.git /app
+RUN git clone https://github.com/snibox/snibox.git /app && cd /app && git reset --hard $GIT_HASH
+
 COPY Gemfile ./
 RUN gem install bundler && bundle install
 COPY database.yml ./config/
 COPY application.rb ./config/
-COPY docker-entrypoint.sh ./
 
 VOLUME /app/db/database
 
-RUN ./bin/rake db:migrate
-
-RUN ./bin/rake assets:precompile
+RUN bin/rake assets:precompile
 
 EXPOSE 3000
 
