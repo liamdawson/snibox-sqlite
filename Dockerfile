@@ -12,10 +12,12 @@ RUN apk add --no-cache \
 
 WORKDIR /app
 
+ARG GIT_HASH
+ENV GIT_HASH ${GIT_HASH:2dad2bb572aa458760decde5320c382b3080a22e}
+
 ENV RAILS_ENV development
 ENV RACK_ENV development
 ENV NODE_ENV production
-ENV GIT_HASH 2dad2bb572aa458760decde5320c382b3080a22e
 
 RUN git clone https://github.com/snibox/snibox.git /app && cd /app && git reset --hard $GIT_HASH
 
