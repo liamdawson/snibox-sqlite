@@ -23,6 +23,13 @@ module Snibox
     config.load_defaults 5.1
     config.web_console.whitelisted_ips = '0.0.0.0/0'
 
+    # Loggin to STDOUT for Docker
+    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    config.log_level = :debug
+    config.log_tags = [ :request_id ]
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
