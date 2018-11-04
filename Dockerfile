@@ -1,4 +1,4 @@
-FROM ruby:2.5.1-alpine3.7
+FROM ruby:2.5-alpine
 
 RUN apk add --no-cache \
     git \
@@ -21,10 +21,9 @@ ENV NODE_ENV production
 
 RUN git clone https://github.com/snibox/snibox.git /app && cd /app && git reset --hard $GIT_HASH
 
-COPY Gemfile ./
+COPY . /app
+
 RUN gem install bundler && bundle install
-COPY database.yml ./config/
-COPY application.rb ./config/
 
 VOLUME /app/db/database
 
