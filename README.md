@@ -2,6 +2,20 @@
 
 Snibox container working with SQLite3 database for personal use
 
+To build this container use following command:
+
+```bash
+git clone https://gitlab.com/pivpav/snibox-sqlite.git
+cd snibox-sqlite
+docker build -t snibox .
+```
+
+Alternatively you can use ready to use image
+
+```bash
+docker pull snowmean/snibox-sqlite:latest
+```
+
 To run this container use following parameters:
 
 ```bash
