@@ -6,8 +6,7 @@ To build this container use following command:
 
 ```bash
 git clone https://gitlab.com/pivpav/snibox-sqlite.git
-cd snibox-sqlite
-docker build -t snibox .
+docker build -t snibox ./snibox-sqlite
 ```
 
 Alternatively you can use ready to use image
