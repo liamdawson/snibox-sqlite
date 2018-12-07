@@ -25,10 +25,6 @@ docker run -d --name snibox \
               snibox
 ```
 
-After first run you probably will see error due to database hasn't been initialized in the attached volume. Pleas run following command to create empty database:
+Default database file location is `/app/db/database/snibox.sqlite3`, however you can redefine it by using environment variable `DATABASE`.
 
-```bash
-docker exec <container_id> /app/bin/rails db:migrate
-```
-
-This will create new database instance and Snibox is ready to go.
+Container is running `rake db:migrate` on every start, in order to either create database if not exist, or update database scheme if required, so backups are highly recommended.

@@ -27,9 +27,8 @@ RUN gem install bundler && bundle install
 
 VOLUME /app/db/database
 
-RUN bin/rake assets:precompile
+RUN bundle exec rake assets:precompile
 
 EXPOSE 3000
 
-ENTRYPOINT ["bundle", "exec"]
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD cd /app && rake 'db:migrate' && bundle exec rails server -b 0.0.0.0
