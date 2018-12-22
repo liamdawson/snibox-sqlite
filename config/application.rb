@@ -23,6 +23,9 @@ module Snibox
     config.load_defaults 5.1
     config.web_console.whitelisted_ips = '0.0.0.0/0'
 
+    # SQLite3 fix
+    config.active_record.sqlite3.represent_boolean_as_integer = true
+
     # Loggin to STDOUT for Docker
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
