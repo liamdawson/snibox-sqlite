@@ -17,9 +17,11 @@ phases:
   build:
     commands:
     - echo "Building $ECR/$IMAGE:$DATE"
-    - docker build -t "$ECR/$IMAGE:$DATE" .
+    - docker build -t $IMAGE:$DATE .
   post_build:
     commands:
+    - echo "Tagging image"
+    - docker tag $IMAGE:$DATE $ECR/$IMAGE:$DATE
     - echo "Uploading docker image"
     - docker push $ECR/$IMAGE:$DATE
     - echo "Generating image definition"
