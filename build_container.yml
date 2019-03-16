@@ -3,7 +3,7 @@ version: 0.2
 
 env:
   variables:
-    ECR: 724284355692.dkr.ecr.${AWS_REGION}.amazonaws.com
+    ACCOUNT: 724284355692
 
 phases:
   pre_build:
@@ -11,6 +11,7 @@ phases:
     - echo "Evaluate environment"
     - DATE=$(date +%Y%m%d)
     - IMAGE="snibox-sqlite"
+    - ECR="$ACCOUNT.dkr.ecr.$AWS_REGION.amazonaws.com"
     - echo -n $DATE > tag.txt
     - echo "Logging to docker"
     - aws ecr get-login --region $AWS_REGION --no-include-email | bash

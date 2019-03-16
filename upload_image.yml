@@ -4,7 +4,7 @@ version: 0.2
 env:
   variables:
     USER: snowmean
-    ECR: 724284355692.dkr.ecr.${AWS_REGION}.amazonaws.com
+    ACCOUNT: 724284355692
   parameter-store:
     PASSWD: "docker_password"
 
@@ -14,6 +14,7 @@ phases:
     - echo "Evaluating environment"
     - TAG=$(cat tag.txt)
     - IMAGE="snibox-sqlite"
+    - ECR="$ACCOUNT.dkr.ecr.$AWS_REGION.amazonaws.com"
   build:
     commands:
     - echo "Logging to ECR"
