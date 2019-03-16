@@ -30,4 +30,3 @@ artifacts:
     - imagedefinitions.json
     - upload_image.yml
     - tag.txt
-
