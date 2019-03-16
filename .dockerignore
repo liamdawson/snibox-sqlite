@@ -5,3 +5,5 @@ Dockerfile
 README.md
 docker-compose.yml
 snibox.sh
+build_container.yml
+upload_image.yml

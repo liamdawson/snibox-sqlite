@@ -1,0 +1,29 @@
+---
+version: 0.2
+
+env:
+  variables:
+    USER: snowmean
+    ECR: 724284355692.dkr.ecr.$AWS_REGION.amazonaws.com
+  parameter-store:
+    PASSWD: "docker_password"
+
+phases:
+  pre_build:
+    commands:
+    - echo "Evaluating environment"
+    - TAG=$(cat tag.txt)
+    - IMAGE="snibox-sqlite"
+  build:
+    commands:
+    - echo "Logging to ECR"
+    - aws ecr get-login --region $AWS_REGION --no-include-email | bash
+    - echo "Download ECR image"
+    - docker pull $ECR/$IMAGE:$TAG
+    - echo "Updating tags"
+    - docker tag $ECR/$IMAGE:$TAG $USER/$IMAGE:$TAG
+    - docker tag $USER/$IMAGE:$TAG $USER/$IMAGE:latest
+    - echo "Logging to Docker Hub"
+    - docker login -u $USER -p $PASSWD
+    - docker push $USER/$IMAGE:$TAG
+    - docker push $USER/$IMAGE:latest

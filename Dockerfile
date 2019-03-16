@@ -1,4 +1,4 @@
-FROM ruby:2.5-alpine
+FROM ruby:2.6-alpine
 
 RUN apk add --no-cache \
     git \
@@ -12,7 +12,7 @@ RUN apk add --no-cache \
 
 WORKDIR /app
 
-ENV GIT_HASH 82a2fa3ca1038b1c9defc77b3132a511daa7592f
+ENV GIT_HASH fe586f4653e337f84cbb4116d0c5887f67268569
 
 ENV RAILS_ENV development
 ENV RACK_ENV development
