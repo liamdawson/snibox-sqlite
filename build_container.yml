@@ -3,7 +3,7 @@ version: 0.2
 
 env:
   variables:
-    ECR: 724284355692.dkr.ecr.$AWS_REGION.amazonaws.com
+    ECR: 724284355692.dkr.ecr.${AWS_REGION}.amazonaws.com
 
 phases:
   pre_build:
@@ -17,11 +17,9 @@ phases:
   build:
     commands:
     - echo "Building $ECR/$IMAGE:$DATE"
-    - docker build -t $IMAGE:$DATE .
+    - docker build -t $ECR/$IMAGE:$DATE .
   post_build:
     commands:
-    - echo "Tagging image"
-    - docker tag $IMAGE:$DATE $ECR/$IMAGE:$DATE
     - echo "Uploading docker image"
     - docker push $ECR/$IMAGE:$DATE
     - echo "Generating image definition"

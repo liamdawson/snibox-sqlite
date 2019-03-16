@@ -4,7 +4,7 @@ version: 0.2
 env:
   variables:
     USER: snowmean
-    ECR: 724284355692.dkr.ecr.$AWS_REGION.amazonaws.com
+    ECR: 724284355692.dkr.ecr.${AWS_REGION}.amazonaws.com
   parameter-store:
     PASSWD: "docker_password"
 
