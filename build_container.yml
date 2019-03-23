@@ -28,5 +28,4 @@ phases:
 artifacts:
     files:
     - imagedefinitions.json
-    - upload_image.yml
     - tag.txt
