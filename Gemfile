@@ -7,8 +7,8 @@ end
 
 ruby '>= 2.5.0', '< 2.7.0'
 
-gem 'rails', '~> 5.2', '>=5.2.2'
-gem 'pg', '~> 1.0'
+gem 'rails', '~> 5.2', '>=5.2.2.1'
+gem 'pg', '~> 1.1', '>= 1.1.4'
 gem 'puma', '~> 3.12'
 
 gem 'active_model_serializers', '~> 0.10.9'
