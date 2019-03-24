@@ -22,7 +22,7 @@ RUN git clone https://github.com/snibox/snibox.git /app && cd /app && git reset 
 
 COPY . /app
 
-RUN echo "\ngem 'sqlite'" >> Gemfile && gem install bundler && bundle install
+RUN echo "gem 'sqlite3', '~> 1.3.6'" >> Gemfile && gem install bundler && bundle install
 
 VOLUME /app/db/database
 
