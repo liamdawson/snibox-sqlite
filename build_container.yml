@@ -29,3 +29,4 @@ artifacts:
     files:
     - imagedefinitions.json
     - tag.txt
+    - upload_image.yml
