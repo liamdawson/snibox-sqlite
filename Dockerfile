@@ -12,7 +12,7 @@ RUN apk add --no-cache \
 
 WORKDIR /app
 
-ENV GIT_HASH d611a77c0c960425dc416e3d2cf1a30ce59adea4
+ENV GIT_HASH f06c0eba941862203026531c27c7009f8d978bfb
 
 ENV RAILS_ENV development
 ENV RACK_ENV development
