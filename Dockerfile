@@ -14,8 +14,9 @@ WORKDIR /app
 
 ENV GIT_HASH f06c0eba941862203026531c27c7009f8d978bfb
 
-ENV RAILS_ENV development
-ENV RACK_ENV development
+ENV RAILS_SERVE_STATIC_FILES=true
+ENV RAILS_ENV production
+ENV RACK_ENV production
 ENV NODE_ENV production
 
 RUN git clone https://github.com/snibox/snibox.git /app && cd /app && git reset --hard $GIT_HASH
